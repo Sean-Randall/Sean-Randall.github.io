@@ -1,0 +1,322 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #f4f4f4; /* Set a base color for the background */
+}
+
+/* Background Styles */
+.background {
+    background-image: url('https://esosslfiles-a.akamaihd.net/cms/2018/06/0bd6cbfa2d62f86a0a6d1f6b2ce97709.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Welcome Section Styles */
+.welcome {
+    text-align: center;
+    padding: 20px;
+    z-index: 2;
+    margin-top: 100px; /* Push down from the header */
+}
+
+.welcome h2 {
+    font-size: 3em;
+    margin: 0;
+}
+
+/* Guild Content Styles */
+.guild-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    max-width: 80%;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #444;
+}
+
+tr:hover {
+    background-color: #555;
+}
+
+caption {
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Stats Section Styles */
+.stats-section {
+    margin-top: 20px;
+}
+
+.stats-section h3 {
+    margin-top: 0;
+}
+
+form {
+    margin: 20px 0;
+}
+
+form label {
+    margin-right: 10px;
+}
+
+form input[type="number"] {
+    margin-right: 10px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    position: fixed; /* Fixed position to keep footer at the bottom */
+    bottom: 0; /* Align to the bottom */
+    left: 0; /* Align to the left */
+    box-sizing: border-box;
+    z-index: 2; /* Ensure it appears above other content */
+}
+
+/* Text Highlighting */
+.highlight {
+    color: #ffef00;
+}
+
+.green-text {
+    color: #88ff4d;
+}
+
+.blue-text {
+    color: #33bbff;
+}
+
+.pink-text {
+    color: #ff00ff;
+}
+
+/* Responsive Styles */
+@media (max-width: 1038px) {
+    .guild-content,
+    .events,
+    .contact {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .guild-content,
+    .events,
+    .contact {
+        max-width: 95%;
+        padding: 15px;
+    }
+}
+
+/* Guild Listing Section Styles */
+.home {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    max-width: 80%;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* Contact Section Styles */
+.contact {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    max-width: 56%; /* 30% smaller than 80% */
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 56vh; /* 30% smaller than 80vh */
+}
+
+/* Events Section Styles */
+.events {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    max-width: 80%;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+
+}
+
+/* Guild Listing Section Styles */
+.guildListing {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    max-width: 80%;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+
+
+/* Main Content Adjustment */
+main {
+    padding-top: 120px; /* Adjusted to push content down from the header */
+    padding-bottom: 80px; /* Ensures there is enough space for the footer */
+}
+
+/* Event Submission Form Styles */
+.event-submission {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    max-width: 80%;
+    text-align: center;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.event-submission form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-submission label {
+    margin-bottom: 5px;
+}
+
+.event-submission input[type="text"],
+.event-submission select,
+.event-submission textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.event-submission input[type="radio"] {
+    margin-right: 5px;
+}
+
+.event-type-options label {
+    margin-right: 15px;
+}
+
+.event-submission button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.event-submission button:hover {
+    background-color: #333;
+}
+
+#form-feedback {
+    margin-top: 10px;
+    color: red;
+}

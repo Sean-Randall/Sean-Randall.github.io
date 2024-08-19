@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Anti Parse</title>
+    <link rel="stylesheet" href="AntiParse.css">
+    <script src="AntiParse.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Anti Parse</h1>
+        <nav>
+            <ul>
+                <li><a href="AntiParseHome.html">Home</a></li>
+                <li><a href="AntiParseGuildListing.html">Guild Listing</a></li>
+                <li><a href="AntiParseMembers.html">Members</a></li>
+                <li><a href="AntiParseEvents.html">Events</a></li>
+                <li><a href="AntiParseContacts.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="background">
+        <main>
+            <section class="home">
+                <h2>Upcoming Events</h2>
+                <p>Join us for a variety of exciting events and activities! Here's what's coming up:</p>
+                    <p>Events coming soon.</p>
+                    <p>Please submit an event idea with our Event Submission Form.</p>
+                    <section class="event-submission">
+                        <h2>Event Submission Form</h2>
+                        <form id="event-form">
+                            <label for="event-name">Event Name:</label>
+                            <input type="text" id="event-name" name="event-name" required>
+                            <br><br>
+                    
+                            <label>Event Type:</label>
+                            <div id="event-type-options">
+                                <label><input type="radio" name="event-type" value="pve" required> PVE</label>
+                                <label><input type="radio" name="event-type" value="pvp" required> PVP</label>
+                                <label><input type="radio" name="event-type" value="other" required> Other</label>
+                            </div>
+                            <br><br>
+                    
+                            <div id="additional-options"></div>
+                            
+                            <label for="event-description">Event Description:</label>
+                            <textarea id="event-description" name="event-description" rows="4" required></textarea>
+                            <br><br>
+                    
+                            <button type="submit">Submit Event</button>
+                        </form>
+                        <div id="form-feedback"></div>
+                    </section>
+                    
+                    
+                    
+                    
+<!--                 <ul class="event-list">  // Example events to be updated in future
+                    <li class="event">
+                        <h3>Guild Raid - August 15, 2024</h3>
+                        <p>Join us for a thrilling raid against the fiercest bosses in the game. Meet in the guild hall at 8 PM.</p>
+                    </li>
+                    <li class="event">
+                        <h3>Weekly PvP Tournament - August 20, 2024</h3>
+                        <p>Test your skills against other members in our weekly PvP tournament. Sign up by August 18 to participate.</p>
+                    </li>
+                    <li class="event">
+                        <h3>Guild Trivia Night - August 25, 2024</h3>
+                        <p>Show off your knowledge of guild history and Elder Scrolls lore in our trivia night. Starts at 7 PM.</p>
+                    </li>
+                    <li class="event">
+                        <h3>Community Crafting Workshop - August 30, 2024</h3>
+                        <p>Learn new crafting techniques and share your favorite recipes with other members. Workshop begins at 6 PM.</p>
+                    </li> -->
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <p>Contact us at Discord: [<a href="https://discord.gg/SNXFGz2eDQ">Anti Parse</a>]</p>
+        <p>Follow us on social media: [Insert Anti Parse Facebook]</p>
+    </footer>
+</body>
+</html>
