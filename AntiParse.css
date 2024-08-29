@@ -1,11 +1,16 @@
+/* Ensure no margin or padding on body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure full height for the background */
+}
+
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     color: white;
-    background-color: #f4f4f4; /* Set a base color for the background */
+    background-color: #f4f4f4; /* Base color for the background */
 }
 
 /* Background Styles */
@@ -64,7 +69,7 @@ nav ul li a:hover {
     text-align: center;
     padding: 20px;
     z-index: 2;
-    margin-top: 100px; /* Push down from the header */
+    margin-top: 10px; /* Push down from the header */
 }
 
 .welcome h2 {
@@ -234,7 +239,6 @@ footer {
     text-align: center;
     z-index: 2;
     box-sizing: border-box;
-
 }
 
 /* Guild Listing Section Styles */
@@ -251,12 +255,34 @@ footer {
     box-sizing: border-box;
 }
 
+/* Location Page Styles */
+.location-page {
+    text-align: center; /* Center-aligns map and coordinates */
+    background-image: url('https://esosslfiles-a.akamaihd.net/cms/2018/06/0bd6cbfa2d62f86a0a6d1f6b2ce97709.jpg'); /* Add background image */
+    background-size: cover; /* Ensure the background image covers the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating of the background image */
+    padding: 20px; /* Add padding to ensure content doesn't touch edges */
+    margin: 0; /* Ensure no margin */
+}
 
+.location-page #map {
+    height: 400px; /* Ensure the map height is reasonable */
+    width: 80%; /* Same as other sections */
+    max-width: 800px; /* Optional: set a maximum width */
+    margin: 20px auto; /* Center the map container */
+    border-radius: 8px; /* Rounded corners for the map */
+}
+
+.location-page .coordinates {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
 /* Main Content Adjustment */
 main {
     padding-top: 120px; /* Adjusted to push content down from the header */
-    padding-bottom: 80px; /* Ensures there is enough space for the footer */
+    padding-bottom: 80px; /* Added padding at the bottom to ensure space for the footer */
 }
 
 /* Event Submission Form Styles */
