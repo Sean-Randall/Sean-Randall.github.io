@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <link rel="stylesheet" href="AntiParse.css">
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .map-container,
+        .info-container {
+            width: 100%;
+            max-width: 1000px; /* Adjust this to fit your design */
+            margin: 0 auto; /* Center-align container */
+        }
+        .info-container {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background for readability */
+            color: white; /* White text for contrast */
+            padding: 20px; /* Padding for spacing */
+            border-radius: 8px; /* Rounded corners for the container */
+            text-align: center; /* Center-align text */
+            margin-bottom: 20px; /* Space below the container */
+        }
+        .info-container p {
+            margin: 10px 0; /* Margin between paragraphs */
+        }
+        .disclosure {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background for visibility */
+            color: white; /* White text for readability */
+            padding: 20px; /* Padding for spacing */
+            border-radius: 8px; /* Rounded corners */
+            text-align: center; /* Center-align text */
+        }
+    </style>
+</head>
+<body class="location-page">
+    <header>
+        <h1>Your Current Location</h1>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="AntiParseGuildListing.html">Guild Listing</a></li>
+                <li><a href="AntiParseMembers.html">Members</a></li>
+                <li><a href="AntiParseContacts.html">Contact</a></li>
+                <li><a href="AntiParseEvents.html">Events</a></li>
+                <li><a href="AntiParseGallery.html">Gallery</a></li>
+                <li><a href="AntiParseLocation.html">Location</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        <div class="info-container">
+            <p>Latitude: <span id="latitude"></span></p>
+            <p>Longitude: <span id="longitude"></span></p>
+        </div>
+        <div class="disclosure">
+            <h2>Disclosure</h2>
+            <p>We understand that seeing your location on this map might be concerning. Please note that the location data is used solely for educational purposes and is part of a project to demonstrate geolocation features. Your privacy is important to us, and this information will not be stored or used beyond this page. If you have any questions or concerns, feel free to contact us.</p>
+        </div>
+    </main>
+    <footer>
+        <p>Contact us at Discord: [<a href="https://discord.gg/SNXFGz2eDQ">Anti Parse</a>]</p>
+        <p>Follow us on social media: [Insert Anti Parse Facebook]</p>
+    </footer>
+
+    <script>
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+
+                    document.getElementById('latitude').textContent = lat;
+                    document.getElementById('longitude').textContent = lng;
+
+                    var mapOptions = {
+                        center: { lat: lat, lng: lng },
+                        zoom: 14
+                    };
+
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                    var marker = new google.maps.Marker({
+                        position: { lat: lat, lng: lng },
+                        map: map,
+                        title: "You are here!"
+                    });
+                }, function() {
+                    alert("Geolocation is not supported by this browser or permission was denied.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDybjqcjnckBcbzVecWPgTeP25yCT43i20&callback=initMap"></script>
+</body>
+</html>
