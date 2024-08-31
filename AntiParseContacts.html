@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Anti Parse</title>
     <link rel="stylesheet" href="AntiParse.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="AntiParse.js" defer></script>
 </head>
 <body>
     <header>
@@ -28,7 +30,7 @@
                 <h2>Contact Us</h2>
                 <p>If you have any questions or need to get in touch with guild leadership, please use the form below.</p>
 
-                <form>
+                <form id="contact-form">
                     <label for="name">Name:</label>
                     <input type="text" id="name" required><br><br>
                     <label for="email">Email:</label>
@@ -37,6 +39,7 @@
                     <textarea id="message" rows="5" required></textarea><br><br>
                     <button type="submit">Send</button>
                 </form>
+                <div id="form-feedback" style="margin-top: 10px;"></div>
             </section>
         </main>
     </div>
