@@ -20,13 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to get CP data from the table
     function getCPDataFromTable() {
         const cpData = [];
-        const table = document.getElementById('membersTable');
-        if (table) {
-            const rows = table.querySelectorAll('tbody tr');
-            rows.forEach(row => {
-                const cpCell = row.querySelector('td:nth-child(3)'); // Assuming CP is in the third column
-                const cpText = cpCell.textContent.trim();
-                const cpValue = parseInt(cpText);
+        // const table = document.getElementById('membersTable');
+        // if (table) {
+        //     const rows = table.querySelectorAll('tbody tr');
+        //     rows.forEach(row => {
+        //         const cpCell = row.querySelector('td:nth-child(3)'); // Assuming CP is in the third column
+        //         const cpText = cpCell.textContent.trim();
+        //         const cpValue = parseInt(cpText);
+        //         if (!isNaN(cpValue)) {
+        //             cpData.push(cpValue);
+        //         }
+        //     });
+        // }
+        // return cpData;
+
+        // jQuery replacement
+        const $table = $('#membersTable');
+        if ($table.length) {
+            const $cpCells = $table.find('tbody td:nth-child(3)');
+            $cpCells.each(function() {
+                const cpValue = parseInt($(this).text());
                 if (!isNaN(cpValue)) {
                     cpData.push(cpValue);
                 }
@@ -76,15 +89,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to calculate average CP for the Members page
+    // Revised with jQuery
     function calculateAverageCP() {
-        const table = document.getElementById("membersTable");
-        if (table) {
-            const cpCells = table.querySelectorAll("tbody td:nth-child(3)");
+        // Use jQuery selectors
+        // const $table = $('#membersTable');
+        // if ($table.length) {
+        //     const $cpCells = $table.find('tbody td:nth-child(3)');
+        //     let sum = 0;
+        //     let count = 0;
+
+        //     $cpCells.each(function() {
+        //         const cpValue = parseInt($(this).text());
+        //         if (!isNaN(cpValue)) { // Include only numeric CP values
+        //             sum += cpValue;
+        //             count++;
+        //         }
+        //     });
+
+        //     const averageCP = count > 0 ? (sum / count).toFixed(0) : 0;
+        //     $('#average-cp').text(`Average Guild CP: ${averageCP}`);
+        // }
+
+        // jQuery replacement
+        const $table = $('#membersTable');
+        if ($table.length) {
+            const $cpCells = $table.find('tbody td:nth-child(3)');
             let sum = 0;
             let count = 0;
 
-            cpCells.forEach(cell => {
-                const cpValue = parseInt(cell.textContent);
+            $cpCells.each(function() {
+                const cpValue = parseInt($(this).text());
                 if (!isNaN(cpValue)) { // Include only numeric CP values
                     sum += cpValue;
                     count++;
@@ -92,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const averageCP = count > 0 ? (sum / count).toFixed(0) : 0;
-            document.getElementById("average-cp").textContent = `Average Guild CP: ${averageCP}`;
+            $('#average-cp').text(`Average Guild CP: ${averageCP}`);
         }
     }
 
@@ -100,14 +134,51 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateAverageCP();
 
     // Event listener to dynamically update additional options based on event type
-    const eventTypeOptionsContainer = document.getElementById('event-type-options');
-    const additionalOptionsDiv = document.getElementById('additional-options');
-    const eventForm = document.getElementById('event-form');
-    const formFeedback = document.getElementById('form-feedback');
+    document.addEventListener('DOMContentLoaded', () => {
+        // Handle contact form submission
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
     
-    if (eventTypeOptionsContainer) {
-        eventTypeOptionsContainer.addEventListener('change', () => {
-            const selectedType = document.querySelector('input[name="event-type"]:checked') ? document.querySelector('input[name="event-type"]:checked').value : null;
+        if (contactForm) {
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent default form submission
+    
+                // Retrieve form field values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+    
+                // Validate required fields
+                if (!name || !email || !message) {
+                    formFeedback.innerHTML = 'Please fill out all required fields.';
+                    return;
+                }
+    
+                // Simple email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    formFeedback.innerHTML = 'Please enter a valid email address.';
+                    return;
+                }
+    
+                // If all validation passes
+                formFeedback.innerHTML = 'Thank you for contacting us! We will get back to you soon.';
+    
+                // Optionally, you could clear the form fields here
+                contactForm.reset();
+            });
+        }
+    });
+    
+
+    const $eventTypeOptionsContainer = $('#event-type-options');
+    const $additionalOptionsDiv = $('#additional-options');
+    const $eventForm = $('#event-form');
+    const $formFeedback = $('#form-feedback');
+    
+    if ($eventTypeOptionsContainer.length) {
+        $eventTypeOptionsContainer.on('change', () => {
+            const selectedType = $('input[name="event-type"]:checked').val();
             let additionalHTML = '';
 
             if (selectedType === 'pve') {
@@ -140,43 +211,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 additionalHTML = '';
             }
 
-            additionalOptionsDiv.innerHTML = additionalHTML;
+            $additionalOptionsDiv.html(additionalHTML);
         });
     }
 
     // Event listener to handle event form submission
-    if (eventForm) {
-        eventForm.addEventListener('submit', (event) => {
+    if ($eventForm.length) {
+        $eventForm.on('submit', (event) => {
             event.preventDefault(); // Prevent default form submission
 
             // Clear previous feedback
-            formFeedback.innerHTML = '';
+            $formFeedback.html('');
 
             // Retrieve form field values
-            const eventName = document.getElementById('event-name').value.trim();
-            const eventType = document.querySelector('input[name="event-type"]:checked') ? document.querySelector('input[name="event-type"]:checked').value : null;
-            const eventDescription = document.getElementById('event-description').value.trim();
-            const pveType = document.getElementById('pve-type') ? document.getElementById('pve-type').value : null;
-            const pvpType = document.getElementById('pvp-type') ? document.getElementById('pvp-type').value : null;
+            const eventName = $('#event-name').val().trim();
+            const eventType = $('input[name="event-type"]:checked').val();
+            const eventDescription = $('#event-description').val().trim();
+            const pveType = $('#pve-type').length ? $('#pve-type').val() : null;
+            const pvpType = $('#pvp-type').length ? $('#pvp-type').val() : null;
 
             // Validate required fields
             if (!eventName || !eventType || !eventDescription) {
-                formFeedback.innerHTML = 'Please fill out all required fields.';
+                $formFeedback.html('Please fill out all required fields.');
                 return;
             }
 
             // Additional validation based on event type
             if (eventType === 'pve' && !pveType) {
-                formFeedback.innerHTML = 'Please select a PVE type.';
+                $formFeedback.html('Please select a PVE type.');
                 return;
             }
             if (eventType === 'pvp' && !pvpType) {
-                formFeedback.innerHTML = 'Please select a PVP type.';
+                $formFeedback.html('Please select a PVP type.');
                 return;
             }
 
             // Display confirmation message
-            formFeedback.innerHTML = 'Event submitted successfully!';
+            $formFeedback.html('Event submitted successfully!');
         });
     }
 });
