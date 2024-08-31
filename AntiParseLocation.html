@@ -6,6 +6,7 @@
     <title>Location</title>
     <link rel="stylesheet" href="AntiParse.css">
     <style>
+        /* Your existing styles */
         #map {
             height: 400px;
             width: 100%;
@@ -60,6 +61,9 @@
         <div class="info-container">
             <p>Latitude: <span id="latitude"></span></p>
             <p>Longitude: <span id="longitude"></span></p>
+            <p>Temperature: <span id="temperature"></span> °F</p>
+            <p>Weather: <span id="weather-description"></span></p>
+            <p>Humidity: <span id="humidity"></span>%</p>
         </div>
         <div class="disclosure">
             <h2>Disclosure</h2>
@@ -92,12 +96,46 @@
                         map: map,
                         title: "You are here!"
                     });
+
+                    // Fetch weather data
+                    fetchWeather(lat, lng);
                 }, function() {
                     alert("Geolocation is not supported by this browser or permission was denied.");
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
+        }
+
+        function fetchWeather(lat, lng) {
+            const apiKey = '14cb5727f4a9c09722cd6e3b01a33407';
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=imperial&appid=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Log the data to check the response
+
+                    // Check if the necessary data is available
+                    if (data.main && data.weather && data.weather[0]) {
+                        const temp = data.main.temp;
+                        const description = data.weather[0].description;
+                        const humidity = data.main.humidity;
+
+                        // Update the DOM with weather information
+                        document.getElementById('temperature').textContent = temp;
+                        document.getElementById('weather-description').textContent = description;
+                        document.getElementById('humidity').textContent = humidity;
+                    } else {
+                        console.error('Weather data is not available.');
+                        document.getElementById('temperature').textContent = 'N/A';
+                        document.getElementById('weather-description').textContent = 'N/A';
+                        document.getElementById('humidity').textContent = 'N/A';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                });
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDybjqcjnckBcbzVecWPgTeP25yCT43i20&callback=initMap"></script>
